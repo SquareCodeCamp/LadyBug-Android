@@ -76,10 +76,10 @@ public abstract class WalletActivity extends Activity {
 
         // Check if the user is logged in. We just injected this class in the previous line so it
         // is now usable.
-        //if (!apiHeaders.hasSession()) {
-            // Hey! No session therefore the user is logged out. Punt them to login activity.
-          //  signOut();
-        //}
+        if (!apiHeaders.hasSession()) {
+          //   Hey! No session therefore the user is logged out. Punt them to login activity.
+            signOut();
+        }
     }
 
     private void signOut() {

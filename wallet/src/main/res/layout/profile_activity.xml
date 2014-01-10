@@ -17,7 +17,7 @@
         android:id="@+id/user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+ø
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

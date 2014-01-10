@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.example.android101.data.ApiHeaders;
 import com.example.android101.data.YourService;
+import com.example.android101.data.response.MockLadyBugService;
+import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.security.cert.CertificateException;
@@ -33,7 +35,7 @@ public class WalletModule {
     /**
      * Create the global request headers object which also manages the user's session token.
      */
-    ApiHeaders provideApiHeaders() {
+    ApiHeaders provideApiHeaders(Gson gson) {
         // About the method declaration...
 
         // @Provides:  Indicates to Dagger that this method provides instances of a specific type.
@@ -48,7 +50,7 @@ public class WalletModule {
         SharedPreferences preferences = app.getSharedPreferences("Wallet", MODE_PRIVATE);
         // Create the object and pass in the shared preferences. Because this is annotated with
         // @Singleton, this will be the only one that is created.
-        return new ApiHeaders(preferences);
+        return new ApiHeaders(preferences,gson);
     }
 
     /**
@@ -92,14 +94,15 @@ public class WalletModule {
     /**
      * Create an instance of our API interface whose methods make real API calls!
      */
-    YourService provideWalletService(RestAdapter restAdapter) {
+    YourService provideWalletService(RestAdapter restAdapter, ApiHeaders apiHeaders) {
         // This is pure magic. The RestAdapter from Retrofit takes our API interface and turns it into
         // a real class whose methods make actual API calls. Some real hand-wavy shit happens here.
         //
         // If you know Java, it's just a Proxy that caches annotations for speed. In version 2.0 we're
         // actually going to code-gen implementations of your interfaces since reflections is abysmally
         // slow on Android. How gangster is that?
-        return restAdapter.create(YourService.class);
+        //return restAdapter.create(YourService.class);
+        return new MockLadyBugService(apiHeaders);
     }
 
     /**

@@ -1,17 +1,27 @@
 package com.example.android101.ui;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android101.R;
 import com.example.android101.WalletActivity;
 import com.example.android101.data.MockData;
+import com.example.android101.data.YourService;
 import com.example.android101.data.model.Post;
 import com.example.android101.data.model.User;
 
 import java.util.Arrays;
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Activities are high-level screens in an app. Similar to pages on a website. Content
@@ -26,6 +36,7 @@ public class NewsfeedActivity extends WalletActivity {
 
     ListView listView;
     private PostAdapter adapter;
+    EditText newPost;
 
     /**
      * Android has a managed lifecycle. The operating system creates and destroys things as the user
@@ -45,6 +56,28 @@ public class NewsfeedActivity extends WalletActivity {
 
         adapter = new PostAdapter(this);
 
+        newPost = (EditText) findViewById(R.id.new_post);
+
+        newPost.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(final TextView textView, int i, KeyEvent keyEvent) {
+                yourService.newPost(textView.getText().toString(),new Callback<Post>() {
+                    @Override
+                    public void success(Post post, Response response) {
+                        adapter.addPost(post);
+                        textView.setText("");
+                    }
+
+                    @Override
+                    public void failure(RetrofitError retrofitError) {
+                        Toast.makeText(NewsfeedActivity.this, "Error with post", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                return false;
+            }
+        });
+
         listView = (ListView) findViewById(R.id.grid_view);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -54,17 +87,17 @@ public class NewsfeedActivity extends WalletActivity {
                 PostActivity.start(post, gson, NewsfeedActivity.this);
             }
         });
-        adapter.updateMerchants(Arrays.asList(MockData.POSTS));
-//        yourService.listMerchants(20, new Callback<DirectoryMerchantResponse>() {
-//            @Override
-//            public void success(DirectoryMerchantResponse directoryMerchantResponse, Response response) {
-//                adapter.updateMerchants(directoryMerchantResponse.entities);
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError retrofitError) {
-//                // Do something here. Toast or show an error page?
-//            }
-//        });
+        yourService.listPosts(20, new Callback<List<Post>>() {
+            @Override
+            public void success(List<Post> posts, Response response) {
+                adapter.updateMerchants(posts);
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                // Do something here. Toast or show an error page?
+            }
+        });
+
     }
 }

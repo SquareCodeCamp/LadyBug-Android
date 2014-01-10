@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/grid_view"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical">
+<ListView
+    android:id="@+id/grid_view"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
     android:orientation="vertical"
     >
 
 </ListView>
+    <EditText
+        android:id="@+id/new_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="What's new?"
+        android:inputType="textAutoCorrect|textAutoComplete|textCapSentences"
+        android:imeOptions="actionDone"/>
+</LinearLayout>

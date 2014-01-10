@@ -1,11 +1,17 @@
 package com.example.android101.data;
 
+import com.example.android101.data.model.Post;
 import com.example.android101.data.request.LogInBody;
 import com.example.android101.data.response.DirectoryMerchantResponse;
 import com.example.android101.data.response.LogInResponse;
 import com.example.android101.data.response.SimpleResponse;
+
+import java.util.List;
+
 import retrofit.Callback;
 import retrofit.http.Body;
+import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Query;
@@ -21,13 +27,15 @@ public interface YourService {
       @Body LogInBody body, //
       Callback<LogInResponse> cb);
 
-  @GET("/directory/merchants/views/home") //
-  void listMerchants( //
-      @Query("limit") int limit, //
-      Callback<DirectoryMerchantResponse> callback);
+    @GET("/post") //
+    void listPosts( //
+        @Query("limit") int limit, //
+        Callback<List<Post>> callback);
 
-  @POST("/tabs/open?auto_tab=false") //
-  void openTab( //
-      @Query("merchant_id") String merchantId, //
-      Callback<SimpleResponse> callback);
+     @FormUrlEncoded
+     @POST("/post") //
+    void newPost( //
+        @Field("content") String content, //
+        Callback<Post> callback);
+
 }

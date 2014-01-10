@@ -25,7 +25,12 @@ public class PostAdapter extends BindableAdapter<Post> {
     }
 
     public void updateMerchants(List<Post> newPosts) {
-        this.posts = newPosts;
+        this.posts = new ArrayList<Post>(newPosts);
+        notifyDataSetChanged();
+    }
+
+    public void addPost(Post post) {
+        this.posts.add(0, post);
         notifyDataSetChanged();
     }
 

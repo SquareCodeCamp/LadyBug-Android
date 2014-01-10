@@ -12,6 +12,7 @@ import com.example.android101.R;
 import com.example.android101.WalletApp;
 import com.example.android101.data.ApiHeaders;
 import com.example.android101.data.YourService;
+import com.example.android101.data.model.User;
 import com.example.android101.data.request.LogInBody;
 import com.example.android101.data.response.LogInResponse;
 
@@ -72,7 +73,7 @@ public class LoginActivity extends Activity {
             public void success(LogInResponse logInResponse, Response response) {
                 if (logInResponse.success) {
                     // It worked! Pass along the session token.
-                    onSuccess(logInResponse.session_token);
+                    onSuccess(logInResponse.session_token, logInResponse.user);
                 } else {
                     // Didn't work. Pass along the error message.
                     onError(logInResponse.getMessage());
@@ -87,10 +88,10 @@ public class LoginActivity extends Activity {
         });
     }
 
-    private void onSuccess(String session) {
+    private void onSuccess(String session, User user) {
         // Tell the ApiHeaders about the new session. This value will be persisted on the filesystem
         // automatically (and asynchronously) for future app launches. We only want to login once.
-        apiHeaders.setSession(session);
+        apiHeaders.setSession(session, user);
 
         // Go to the main directory screen.
         startActivity(new Intent(this, NewsfeedActivity.class));

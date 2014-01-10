@@ -23,25 +23,19 @@ public class WalletApp extends Application {
     public Picasso picasso;
     public ApiHeaders apiHeaders;
     public YourService yourService;
-    public User currentUser;
-
 
     @Override
     public void onCreate() {
         super.onCreate();
-        currentUser = new User("1234","User Test","asdf@asdf.com","fdklafdkafd;k","asdf",null,"texas, paris");
         WalletModule walletModule = new WalletModule(this);
 
         gson = new Gson();
         picasso = Picasso.with(this);
-        apiHeaders = walletModule.provideApiHeaders();
+        apiHeaders = walletModule.provideApiHeaders(gson);
 
         OkHttpClient client = walletModule.provideOkHttpClient();
         RestAdapter restAdapter = walletModule.provideRestAdapter(client, apiHeaders);
-        yourService = walletModule.provideWalletService(restAdapter);
+        yourService = walletModule.provideWalletService(restAdapter, apiHeaders);
     }
 
-    public static User getCurrentUser(Context context) {
-        return ((WalletApp)context.getApplicationContext()).currentUser;
-    }
 }

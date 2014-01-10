@@ -32,7 +32,7 @@ public class ProfileActivity extends WalletActivity {
         super.onCreate(savedInstanceState);
         if (isFinishing()) return;
 
-        User currentUser = WalletApp.getCurrentUser(this);
+        User currentUser = apiHeaders.getUser();
 
         setContentView(R.layout.profile_activity);
 
@@ -49,7 +49,7 @@ public class ProfileActivity extends WalletActivity {
         email.setText(currentUser.email);
 
         bio = (TextView) findViewById(R.id.user_bio);
-        xbio.setText(currentUser.bio);
+        bio.setText(currentUser.bio);
 
         post1 = (TextView) findViewById(R.id.user_post1);
         post1.setText("most recent post");
