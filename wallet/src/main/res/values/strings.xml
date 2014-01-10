@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Android 101 Wallet</string>
-    <string name="launcher_name">Android 101</string>
+    <string name="app_name">LadyBug</string>
+    <string name="launcher_name">LadyBug</string>
 
     <string name="login_activity">Sign In</string>
     <string name="login_username">Email</string>
@@ -10,4 +10,11 @@
     <string name="unknown_phone">Unknown Phone Number</string>
     <string name="open_tab">Open Tab</string>
     <string name="merchant_activity">Nearby Merchants</string>
+    <string name="post_activity">View Post</string>
+    <string name="action_newsfeed_title">News</string>
+    <string name="action_people_title">Ladies</string>
+    <string name="action_profile_title">Profile</string>
+    <string name="action_signout">Signout</string>
+    <string name="profile_activity">Profile</string>
+    <string name="people_activity">Ladies</string>
 </resources>

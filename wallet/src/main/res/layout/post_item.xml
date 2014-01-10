@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/post_item_height"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="asdf"
+        android:textSize="16dp"
+        android:gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/post_image_height"
+        android:orientation="horizontal">
+
+        <com.example.android101.util.SquaredImageView
+            android:id="@+id/user_image"
+            android:layout_width="@dimen/post_image_height"
+            android:layout_height="@dimen/post_image_height" />
+
+
+        <TextView
+            android:id="@+id/post_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Starbucks"
+            android:textColor="#6690ff"/>
+    </LinearLayout>
+
+</LinearLayout>

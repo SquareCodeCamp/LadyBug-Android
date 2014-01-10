@@ -14,7 +14,6 @@ import com.example.android101.data.ApiHeaders;
 import com.example.android101.data.YourService;
 import com.example.android101.data.request.LogInBody;
 import com.example.android101.data.response.LogInResponse;
-import com.example.android101.data.response.ServerError;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -94,7 +93,7 @@ public class LoginActivity extends Activity {
         apiHeaders.setSession(session);
 
         // Go to the main directory screen.
-        startActivity(new Intent(this, DirectoryActivity.class));
+        startActivity(new Intent(this, NewsfeedActivity.class));
         // Get rid of this screen. We don't want to come back to login when we hit back.
         finish();
     }

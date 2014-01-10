@@ -31,7 +31,7 @@
           - are easier by just moving to a new activity.
          -->
         <activity
-            android:name=".ui.DirectoryActivity"
+            android:name=".ui.NewsfeedActivity"
             android:label="@string/launcher_name">
             <!--
               - Intents are actions that you want to perform. They are used to move between activities
@@ -54,9 +54,17 @@
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/login_activity" />
+
         <activity
-            android:name=".ui.MerchantActivity"
-            android:label="@string/merchant_activity" />
+            android:name=".ui.PostActivity"
+            android:label="@string/post_activity" />
+
+        <activity
+            android:name=".ui.ProfileActivity"
+            android:label="@string/profile_activity" />
+        <activity
+            android:name=".ui.PeopleActivity"
+            android:label="@string/people_activity" />
     </application>
 
 

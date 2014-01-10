@@ -1,9 +1,11 @@
 package com.example.android101;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.android101.data.ApiHeaders;
 import com.example.android101.data.YourService;
+import com.example.android101.data.model.User;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.picasso.Picasso;
@@ -21,11 +23,13 @@ public class WalletApp extends Application {
     public Picasso picasso;
     public ApiHeaders apiHeaders;
     public YourService yourService;
+    public User currentUser;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        currentUser = new User("1234","User Test","asdf@asdf.com","fdklafdkafd;k","asdf",null,"texas, paris");
         WalletModule walletModule = new WalletModule(this);
 
         gson = new Gson();
@@ -37,4 +41,7 @@ public class WalletApp extends Application {
         yourService = walletModule.provideWalletService(restAdapter);
     }
 
+    public static User getCurrentUser(Context context) {
+        return ((WalletApp)context.getApplicationContext()).currentUser;
+    }
 }
