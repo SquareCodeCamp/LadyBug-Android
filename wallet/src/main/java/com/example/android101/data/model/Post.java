@@ -6,11 +6,11 @@ package com.example.android101.data.model;
 public class Post {
     public final String userId;
     public final String content;
-    public final String postId;
+    public final String id;
 
     public Post(String postId, String userId, String content) {
         this.userId = userId;
         this.content = content;
-        this.postId = postId;
+        this.id = postId;
     }
 }

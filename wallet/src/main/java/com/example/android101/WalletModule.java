@@ -67,7 +67,7 @@ public class WalletModule {
 
         // Declare the base endpoint we will be talking to. We'll use relative URLs from this on all
         // the API definitions that we create.
-        builder.setServer("https://api.squareup.com/1.0/");
+        builder.setServer("https://codecamp-ladybug.herokuapp.com/");
 
         // Set the HTTP client that we'll use. Here we are wrapping the raw OkHttpClient from OkHttp
         // in a Retrofit class. Retrofit will pick an HTTP client for us, but we make our own so that
@@ -101,8 +101,8 @@ public class WalletModule {
         // If you know Java, it's just a Proxy that caches annotations for speed. In version 2.0 we're
         // actually going to code-gen implementations of your interfaces since reflections is abysmally
         // slow on Android. How gangster is that?
-        //return restAdapter.create(YourService.class);
-        return new MockLadyBugService(apiHeaders);
+        return restAdapter.create(YourService.class);
+        //return new MockLadyBugService(apiHeaders);
     }
 
     /**

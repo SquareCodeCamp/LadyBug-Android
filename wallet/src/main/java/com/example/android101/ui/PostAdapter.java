@@ -52,10 +52,10 @@ public class PostAdapter extends BindableAdapter<Post> {
     @Override
     public void bindView(View view, int position, Post post) {
         ImageView imageView = (ImageView) view.findViewById(R.id.user_image);
-        User user = MockData.findUserByToken(post.userId);
+        User user = MockData.USERS[0];
         int picSize = getContext().getResources().getDimensionPixelSize(R.dimen.post_image_height);
         Picasso.with(getContext())
-                .load(user.image)
+                .load(user.pic)
                 .resize(picSize, picSize)
                 .centerCrop()
                 .placeholder(R.drawable.app_icon)

@@ -1,18 +1,12 @@
 package com.example.android101.ui;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android101.R;
 import com.example.android101.WalletActivity;
-import com.example.android101.WalletApp;
-import com.example.android101.data.MockData;
-import com.example.android101.data.model.Post;
 import com.example.android101.data.model.User;
-import com.google.gson.Gson;
 
 /**
  * Created by square on 1/10/14.
@@ -40,10 +34,8 @@ public class ProfileActivity extends WalletActivity {
         userName.setText(currentUser.name);
 
         userImage = (ImageView) findViewById(R.id.user_image);
-        picasso.load(currentUser.image).into(userImage);
+        picasso.load(currentUser.pic).into(userImage);
 
-        location = (TextView) findViewById(R.id.user_location);
-        location.setText(currentUser.location);
 
         email = (TextView) findViewById(R.id.user_email);
         email.setText(currentUser.email);

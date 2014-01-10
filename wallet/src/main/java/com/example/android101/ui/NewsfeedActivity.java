@@ -70,7 +70,7 @@ public class NewsfeedActivity extends WalletActivity {
 
                     @Override
                     public void failure(RetrofitError retrofitError) {
-                        Toast.makeText(NewsfeedActivity.this, "Error with post", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewsfeedActivity.this, "Error with post", Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -95,7 +95,7 @@ public class NewsfeedActivity extends WalletActivity {
 
             @Override
             public void failure(RetrofitError retrofitError) {
-                // Do something here. Toast or show an error page?
+                Toast.makeText(NewsfeedActivity.this, "Error with getting posts", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -32,9 +32,9 @@ public class MockData {
   }
 
   public static final User[] USERS = new User[] {
-      new User("123","Ashley","ashley3@mit.edu","lame","https://www.google.com",null,"Boston, MA"),
-      new User("456", "Shana", "shanahu@berkeley.edu", "lol", "", null, "Berkeley"),
-      new User("789", "Holmes", "holmes.j@gmail.com", "The guy", null, null, "SF!")
+      new User("123","Ashley","ashley3@mit.edu","lame","https://www.google.com",null),
+      new User("456", "Shana", "shanahu@berkeley.edu", "lol", "", null),
+      new User("789", "Holmes", "holmes.j@gmail.com", "The guy", null, null)
   };
 
   public static final List<Post> POSTS = new ArrayList<Post>(Arrays.asList(new Post[]{
