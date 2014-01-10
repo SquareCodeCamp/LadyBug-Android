@@ -34,10 +34,9 @@ public interface YourService {
         @Query("limit") int limit, //
         Callback<List<Post>> callback);
 
-     @FormUrlEncoded
-     @POST("/posts") //
+     @POST("/posts.json") //
     void newPost( //
-        @Field("content") String content, //
+        @Body NewPostBody body, //
         Callback<Post> callback);
 
 

@@ -1,6 +1,7 @@
 package com.example.android101.ui;
 
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.example.android101.R;
 import com.example.android101.WalletActivity;
 import com.example.android101.data.MockData;
+import com.example.android101.data.NewPostBody;
 import com.example.android101.data.YourService;
 import com.example.android101.data.model.Post;
 import com.example.android101.data.model.User;
@@ -61,7 +63,8 @@ public class NewsfeedActivity extends WalletActivity {
         newPost.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(final TextView textView, int i, KeyEvent keyEvent) {
-                yourService.newPost(textView.getText().toString(),new Callback<Post>() {
+                String token = Base64.encodeToString("email@example.com".getBytes(),Base64.DEFAULT);
+                yourService.newPost(new NewPostBody(token, new Post("-1","-1",textView.getText().toString())),new Callback<Post>() {
                     @Override
                     public void success(Post post, Response response) {
                         adapter.addPost(post);

@@ -5,6 +5,7 @@ import android.os.Looper;
 
 import com.example.android101.data.ApiHeaders;
 import com.example.android101.data.MockData;
+import com.example.android101.data.NewPostBody;
 import com.example.android101.data.YourService;
 import com.example.android101.data.model.Post;
 import com.example.android101.data.model.User;
@@ -17,12 +18,14 @@ import retrofit.Callback;
 import retrofit.client.Response;
 import retrofit.http.Body;
 import retrofit.http.Field;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 /**
  * Created by square on 1/10/14.
  */
 public class MockLadyBugService implements YourService{
+
     Handler handler;
     ApiHeaders apiHeaders;
     public MockLadyBugService(ApiHeaders apiHeaders) {
@@ -52,14 +55,19 @@ public class MockLadyBugService implements YourService{
     }
 
     @Override
-    public void newPost(@Field("content") final String content, final Callback<Post> callback) {
+    public void newPost(@Body final NewPostBody content, final Callback<Post> callback) {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Post post = new Post(String.valueOf(MockData.POSTS.size()), apiHeaders.getUser().id, content);
+                Post post = content.post;
                 MockData.POSTS.add(0,post);
                 callback.success(post, null);
             }
         }, 1000);
+    }
+
+    @Override
+    public void getUserProfile(@Path("userId") String user, Callback<User> callback) {
+        // TODO
     }
 }
