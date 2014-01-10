@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android 101 Wallet</string>
+    <string name="launcher_name">Android 101</string>
+
+    <string name="login_activity">Sign In</string>
+    <string name="login_username">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_submit">Sign In</string>
+    <string name="unknown_phone">Unknown Phone Number</string>
+    <string name="open_tab">Open Tab</string>
+    <string name="merchant_activity">Nearby Merchants</string>
+</resources>
