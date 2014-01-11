@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.example.android101.R;
 import com.example.android101.WalletActivity;
 import com.example.android101.data.model.User;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by square on 1/10/14.
@@ -15,7 +16,6 @@ public class ProfileActivity extends WalletActivity {
 
     ImageView userImage;
     TextView userName;
-    TextView location;
     TextView email;
     TextView bio;
     TextView post1;
@@ -34,23 +34,26 @@ public class ProfileActivity extends WalletActivity {
         userName.setText(currentUser.name);
 
         userImage = (ImageView) findViewById(R.id.user_image);
-        picasso.load(currentUser.pic).into(userImage);
+        picasso.load(currentUser.pic)
+                .placeholder(R.drawable.app_icon)
+                .into(userImage);
 
 
         email = (TextView) findViewById(R.id.user_email);
         email.setText(currentUser.email);
 
         bio = (TextView) findViewById(R.id.user_bio);
-        bio.setText(currentUser.bio);
-
+        //bio.setText(currentUser.bio);
+        bio.setText("This is my bio!!" +
+                "I'm a code camper! <3 Square");
         post1 = (TextView) findViewById(R.id.user_post1);
-        post1.setText("most recent post");
+      //  post1.setText("most recent post");
 
         post2 = (TextView) findViewById(R.id.user_post2);
-        post2.setText("most recent post");
+        //post2.setText("most recent post");
 
         post3 = (TextView) findViewById(R.id.user_post3);
-        post3.setText("most recent post");
+        //post3.setText("most recent post");
 
     }
 

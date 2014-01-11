@@ -32,7 +32,7 @@ public class MockData {
   }
 
   public static final User[] USERS = new User[] {
-      new User("123","Ashley","ashley3@mit.edu","lame","https://www.google.com",null),
+      new User("123","Ashley","ashley3@mit.edu","this is my bio","https://www.google.com",null),
       new User("456", "Shana", "shanahu@berkeley.edu", "lol", "", null),
       new User("789", "Holmes", "holmes.j@gmail.com", "The guy", null, null)
   };
